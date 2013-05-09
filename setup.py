@@ -19,7 +19,7 @@ requires = [
 setup(
       name='pyramid_controlpanel',
       version=version,
-      description=Free-form storage of application-specific variables.,
+      description='Free-form storage of application-specific variables.',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
         "Programming Language :: Python",
