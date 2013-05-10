@@ -16,6 +16,12 @@ requires = [
     'waitress',
     ]
 
+tests_require = [
+    'nose',
+    'coverage',
+    'mock',
+]
+
 setup(
       name='pyramid_controlpanel',
       version=version,
@@ -35,8 +41,9 @@ setup(
       include_package_data=True,
       zip_safe=False,
       install_requires=requires,
-      tests_require=requires,
-      test_suite="pyramid_controlpanel",
+      tests_require=requires + tests_require,
+      test_suite="nose.collector",
+      extras_require={'test': tests_require},
       entry_points="""\
       [paste.app_factory]
       main = pyramid_controlpanel:main
