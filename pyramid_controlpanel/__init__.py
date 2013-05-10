@@ -9,6 +9,8 @@ from pyramid_controlpanel.configuration import add_controlpanel_section
 
 
 def includeme(config):
+    config.include('sixfeetup.bowab')
+    config.add_models('pyramid_controlpanel.models')
     config.add_directive('add_controlpanel_section', add_controlpanel_section)
     config.add_route('control_panel', '/control_panel')
     config.add_view(ControlPanel,
@@ -37,6 +39,7 @@ def main(global_config, **settings):
 
     # Includes for any packages that hook into configuration.
     config.include('pyramid_tm')
+    config.include('sixfeetup.bowab')
 
     # Extending an existing package allows you to override
     # view mappings and other configuration details.
