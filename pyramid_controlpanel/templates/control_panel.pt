@@ -1,0 +1,6 @@
+<metal:main use-macro="load: sixfeetup.bowab:templates/base.pt">
+    <metal:title fill-slot="page-title">${api.settings['site_name']} Control Panel</metal:title>
+    <metal:content fill-slot="content">
+        <span tal:replace="structure rendered_form"></span>
+    </metal:content>
+</metal:main>

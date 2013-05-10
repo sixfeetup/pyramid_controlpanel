@@ -1,7 +1,29 @@
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 
-from .models import DBSession, Base
+from sixfeetup.bowab.db.base import DBSession, Base
+from sixfeetup.bowab.configuration import require_csrf
+
+from pyramid_controlpanel.views import ControlPanel
+from pyramid_controlpanel.configuration import add_controlpanel_section
+
+
+def includeme(config):
+    config.add_directive('add_controlpanel_section', add_controlpanel_section)
+    config.add_route('control_panel', '/control_panel')
+    config.add_view(ControlPanel,
+                    attr="get", request_method='GET',
+                    route_name='control_panel',
+                    permission='admin',
+                    http_cache=0,
+                    renderer='templates/control_panel.pt')
+    config.add_view(ControlPanel,
+                    attr="post", request_method='POST',
+                    route_name='control_panel',
+                    permission='admin',
+                    decorator=[require_csrf],
+                    http_cache=0,
+                    renderer='templates/control_panel.pt')
 
 
 def main(global_config, **settings):
