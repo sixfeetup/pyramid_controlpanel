@@ -1,28 +1,22 @@
-from sqlalchemy import (
-    Column,
-    Integer,
-    Text,
-    )
+from sqlalchemy import Column
+from sqlalchemy import UnicodeText
 
-from sqlalchemy.ext.declarative import declarative_base
-
-from sqlalchemy.orm import (
-    scoped_session,
-    sessionmaker,
-    )
-
-from zope.sqlalchemy import ZopeTransactionExtension
-
-DBSession = scoped_session(sessionmaker(extension=ZopeTransactionExtension()))
-Base = declarative_base()
+from sixfeetup.bowab.db.base import Base
+from sixfeetup.bowab.db.types import DottedPath
+from sixfeetup.bowab.db.types import JSON
 
 
-class MyModel(Base):
-    __tablename__ = 'models'
-    id = Column(Integer, primary_key=True)
-    name = Column(Text, unique=True)
-    value = Column(Integer)
+class ControlPanelSection(Base):
+    __tablename__ = 'control_panel_sections'
+    __table_args__ = {'schema': 'settings'}
+    section = Column(UnicodeText, primary_key=True)
+    panel_path = Column(DottedPath)
+    panel_values = Column(JSON)
 
-    def __init__(self, name, value):
-        self.name = name
-        self.value = value
+    def __init__(self, section, panel_path, panel_values):
+        self.section = section
+        self.panel_path = panel_path
+        self.panel_values = panel_values
+
+    def __repr__(self):
+        return u"<ControlPanel(%s, %s)>" % (self.section, self.panel_path)
