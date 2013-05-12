@@ -1,7 +1,7 @@
 from pyramid.config import Configurator
 from sqlalchemy import engine_from_config
 
-from sixfeetup.bowab.db.base import DBSession, Base
+from sixfeetup.bowab.db import Base
 from sixfeetup.bowab.configuration import require_csrf
 
 from pyramid_controlpanel.views import ControlPanel

@@ -1,9 +1,9 @@
 from sqlalchemy import Column
 from sqlalchemy import UnicodeText
 
-from sixfeetup.bowab.db.base import Base
-from sixfeetup.bowab.db.types import DottedPath
-from sixfeetup.bowab.db.types import JSON
+from sixfeetup.bowab.db import Base
+from sixfeetup.bowab.db import DottedPath
+from sixfeetup.bowab.db import JSON
 
 
 class ControlPanelSection(Base):
