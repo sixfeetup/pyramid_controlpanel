@@ -6,7 +6,7 @@ from deform import Form, ValidationFailure
 from pyramid.httpexceptions import HTTPMethodNotAllowed
 from pyramid.view import view_defaults
 
-from sixfeetup.bowab.forms.widgets.csrf import CSRFSchema
+from sixfeetup.bowab.forms.widgets import CSRFSchema
 from pyramid_controlpanel.models import ControlPanelSection
 
 
