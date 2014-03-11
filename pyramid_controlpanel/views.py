@@ -26,6 +26,7 @@ class ControlPanel(object):
                 section_schema,
                 buttons=('submit', 'cancel'),
                 formid=section_name,
+                css_class='form-horizontal',
             )
             self.section_forms[section_name] = section_form
 
